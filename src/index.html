@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Sign Up Component</title>
+
+  <!-- Import the Stencil.js components with module and nomodule scripts -->
+  <script type="module" src="/build/signup-comp-2023.esm.js"></script>
+  <script nomodule src="/build/signup-comp-2023.js"></script>
+</head>
+<style>
+  .signup-btn {
+    /* Custom style for the sign-up button */
+    background-color: #FDA50F;
+    color: white;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 1.5rem;
+    cursor: pointer;
+  }
+</style>
+
+<body>
+
+  <!-- Include the jji-signup-comp component with a title attribute -->
+  <jji-signup-comp titl="Sign Up"></jji-signup-comp>
+
+  <!-- Add a sign-up button to trigger the sign-up component -->
+  <button id="signup-btn" class="signup-btn">Sign Up</button>
+
+
+  <!-- //JavaScript code to handle sign-up button click -->
+  <script>
+    const signUpButton = document.querySelector('#signup-btn');
+    const signUpComp = document.querySelector('jji-signup-comp');
+    signUpButton.addEventListener('click', () => {
+
+      //Check if the sign-up component is not already opened
+      if(!signUpComp.opened) {
+
+        // Open the sign-up component
+        signUpComp.openSignUpComp();
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+.form {
+    position: fixed;
+    width: 25rem;
+    font-family: sans-serif;
+    height: 31.25rem;
+    text-align: center;
+    background-color: black;
+    margin-left: 35%;
+    margin-top: 8%;
+    border-radius: 1rem;
+    opacity: 0.9;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form div {
+    margin-bottom: 1.2rem;
+}
+
+.form a {
+    color: #FDA50F;
+    text-decoration: none;
+  }
+  
+  .form a:hover {
+    text-decoration: underline;
+  }
+
+#signup {
+    color: #FDA50F;
+    font-family: sans-serif;
+    font-size: 2.8rem;
+    margin-bottom: 1.2rem;
+}
+
+#n,
+#e,
+#p1,
+#p2 {
+    width: 15.625rem; 
+    height: 1.563rem;
+    border-radius: 0.625rem; 
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1.2rem; 
+    background-color: rgb(229, 226, 226);
+    border-color: whitesmoke;
+    border-width: 0.125rem; 
+    color: black;
+    margin-bottom: 1.2rem;
+}
+
+.s {
+    width: 100%; 
+    height: 0.5rem;
+    border-radius: 0.625rem; 
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 0.82rem; 
+    background-color: black;
+    border-width: 0.125rem; 
+    color: white;
+    margin-bottom: 1.2rem;
+}
+
+#create {
+    width: 16rem;
+    height: 2.3rem;
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 0.8rem;
+    background-color: black;
+    border-color: #FDA50F;
+    color: #FDA50F;
+    opacity: 0.8;
+    margin-top: 0.625rem;
+    margin-top: 1.2rem;
+}
+
+::placeholder {
+    color: #e1ad21;
+    opacity: 0.8;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+}
+
+:host([opened]) .backdrop {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.7rem;
+}
