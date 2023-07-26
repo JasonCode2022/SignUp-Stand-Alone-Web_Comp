@@ -16,10 +16,10 @@ export class SignUpComp {
 
 
     //Event listener for the 'body:click' event...specially to know the sign in link is clicked.
-    @Listen('body:click')
-    onSignInLinkClick(_event: Event) {
+    @Event() signInLinkClick: EventEmitter<any>;
+    onSignInLinkClick() {
+        this.signInLinkClick.emit();
         console.log('Sign In Button');
-        window.location.href = '/signin.html';
     }
 
     @Prop({ reflect: true }) titl: string;
@@ -225,7 +225,7 @@ export class SignUpComp {
                                 <div>
                                     <span id="sign-in-take" class="s">
                                         Already Have An Account?
-                                        <a onClick={(event) => this.onSignInLinkClick(event)}>
+                                        <a onClick= {this.onSignInLinkClick.bind(this)}>
                                             Sign In
                                         </a>
                                     </span>

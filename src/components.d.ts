@@ -30,6 +30,7 @@ declare global {
 declare namespace LocalJSX {
     interface JjiSignupComp {
         "onFormDataSubmitted"?: (event: JjiSignupCompCustomEvent<{ username: string, email: string, password: string, confirmPassword: string }>) => void;
+        "onSignInLinkClick"?: (event: JjiSignupCompCustomEvent<any>) => void;
         "opened"?: boolean;
         "titl"?: string;
     }
