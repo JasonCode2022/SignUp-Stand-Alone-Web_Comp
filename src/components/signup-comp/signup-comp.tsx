@@ -1,4 +1,4 @@
-import { Component, Method, Prop, State, h, EventEmitter, Event, Listen, Watch } from "@stencil/core";
+import { Component, Method, Prop, State, h, EventEmitter, Event, Watch } from "@stencil/core";
 import { FETCH_API } from "../global/Fetch-API";
 
 
@@ -10,13 +10,15 @@ import { FETCH_API } from "../global/Fetch-API";
 })
 export class SignUpComp {
 
+
+
     //Emitted when the form data is successfully submitted.
     //Contains the form data as an object.
-    @Event() formDataSubmitted: EventEmitter<{ username: string, email: string, password: string, confirmPassword: string }>;
+    @Event({ bubbles: true, composed: true }) formDataSubmitted: EventEmitter<{ username: string, email: string, password: string, confirmPassword: string }>;
 
 
-    //Event listener for the 'body:click' event...specially to know the sign in link is clicked.
-    @Event() signInLinkClick: EventEmitter<any>;
+    //Event listener for the event...specially to know the sign in link is clicked.
+    @Event({ bubbles: true, composed: true }) signInLinkClick: EventEmitter<any>;
     onSignInLinkClick() {
         this.signInLinkClick.emit();
         console.log('Sign In Button');
@@ -79,6 +81,7 @@ export class SignUpComp {
         }
     }
 
+
     handleCreateAccountClick(event: MouseEvent) {
         // Check if the form has been submitted
         if (!this.formSubmitted) {
@@ -94,6 +97,7 @@ export class SignUpComp {
                 this.handleSubmit(event);
             }
         }
+
     }
 
     //Method to handle form submission
@@ -121,6 +125,7 @@ export class SignUpComp {
             //Emit the form data through the custom event
             this.formDataSubmitted.emit(formData);
 
+
             //Perform the API call or data storage logic here
             try {
                 const response = await fetch(`${FETCH_API}`, {
@@ -131,9 +136,11 @@ export class SignUpComp {
                     body: JSON.stringify(formData),
                 });
                 if (response.ok) {
+
                     //Passwords match and the form data is submitted successfully
                     //Redirect to the success page
-                    window.location.href = '/success.html';
+                    // window.location.href = '/success.html';
+
                 } else {
                     console.log(response);
                 }
@@ -209,7 +216,7 @@ export class SignUpComp {
                             {this.showFormError && !this.formSubmitted && (this.username === '' || this.email === '' || this.password === '' || this.confirmPassword === '') && (
                                 <div>
                                     <span id="error-message" class="error">
-                                        Please Fill All Required Fields. 
+                                        Please Fill All Required Fields.
                                     </span>
                                 </div>
                             )}
@@ -225,7 +232,7 @@ export class SignUpComp {
                                 <div>
                                     <span id="sign-in-take" class="s">
                                         Already Have An Account?
-                                        <a onClick= {this.onSignInLinkClick.bind(this)}>
+                                        <a onClick={this.onSignInLinkClick.bind(this)}>
                                             Sign In
                                         </a>
                                     </span>

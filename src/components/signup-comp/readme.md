@@ -18,6 +18,7 @@
 | Event               | Description | Type                                                                                           |
 | ------------------- | ----------- | ---------------------------------------------------------------------------------------------- |
 | `formDataSubmitted` |             | `CustomEvent<{ username: string; email: string; password: string; confirmPassword: string; }>` |
+| `signInLinkClick`   |             | `CustomEvent<any>`                                                                             |
 
 
 ## Methods
