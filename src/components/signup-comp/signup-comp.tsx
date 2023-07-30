@@ -1,12 +1,12 @@
 import { Component, Method, Prop, State, h, EventEmitter, Event, Watch } from "@stencil/core";
-import { FETCH_API } from "../global/Fetch-API";
+// import { FETCH_API } from "../global/Fetch-API";
 
 
 
 @Component({
     tag: 'jji-signup-comp',
     styleUrl: './signup-comp.css',
-    shadow: true,
+
 })
 export class SignUpComp {
 
@@ -126,30 +126,30 @@ export class SignUpComp {
             this.formDataSubmitted.emit(formData);
 
 
-            //Perform the API call or data storage logic here
-            try {
-                const response = await fetch(`${FETCH_API}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
-                if (response.ok) {
+            // //Perform the API call or data storage logic here
+            // try {
+            //     const response = await fetch(`${FETCH_API}`, {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json',
+            //         },
+            //         body: JSON.stringify(formData),
+            //     });
+            //     if (response.ok) {
 
-                    //Passwords match and the form data is submitted successfully
-                    //Redirect to the success page
-                    // window.location.href = '/success.html';
+            //         //Passwords match and the form data is submitted successfully
+            //         //Redirect to the success page
+            //         // window.location.href = '/success.html';
 
-                } else {
-                    console.log(response);
-                }
-            } catch (error) {
-                console.error('Error submitting form:', error);
-            }
+            //     } else {
+            //         console.log(response);
+            //     }
+            // } catch (error) {
+            //     console.error('Error submitting form:', error);
+            // }
 
-            //Set formSubmitted to true after successful submission
-            this.formSubmitted = true;
+            // //Set formSubmitted to true after successful submission
+            // this.formSubmitted = true;
         } else {
             //Passwords don't match, show an error message or take appropriate action
             this.passwordsMatch = false;
@@ -166,9 +166,9 @@ export class SignUpComp {
         if (this.opened) {
             mainContent = [
                 //HTML code for backdrop and form
-                <div class="backdrop" onClick={this.closeSignUpComp.bind(this)}>
+                <div class="backdrop opened" onClick={this.closeSignUpComp.bind(this)}>
                 </div>,
-                //Form elements
+
                 <div>
                     <form class="form">
                         <div>
