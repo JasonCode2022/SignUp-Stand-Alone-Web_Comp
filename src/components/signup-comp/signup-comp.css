@@ -1,4 +1,4 @@
-.form {
+/* .form {
     position: fixed;
     width: 25rem;
     font-family: sans-serif;
@@ -85,7 +85,7 @@
     color: #e1ad21;
     opacity: 0.8;
 }
-
+/*  */
 .backdrop {
     position: fixed;
     top: 0;
@@ -93,7 +93,7 @@
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.75);
-    z-index: 10;
+    z-index: -100;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease-out;
@@ -104,10 +104,10 @@
     pointer-events: all;
 }
 
-.error {
+/* .error {
     color: red;
     font-size: 0.9rem;
     margin-top: 0.7rem;
 }
 
-
+ */ */

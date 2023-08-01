@@ -21,7 +21,7 @@ export class SignUpComp {
     @Event({ bubbles: true, composed: true }) signInLinkClick: EventEmitter<any>;
     onSignInLinkClick() {
         this.signInLinkClick.emit();
-        console.log('Sign In Button');
+        // console.log('Sign In Button');
     }
 
     @Prop({ reflect: true }) titl: string;
@@ -169,83 +169,110 @@ export class SignUpComp {
                 <div class="backdrop opened" onClick={this.closeSignUpComp.bind(this)}>
                 </div>,
 
-                <div>
-                    <form class="form">
-                        <div>
-                            <h1 class="signup-title" id="signup">{this.titl}</h1>
+                <div class="app-content content">
+                    <div class="content-overlay"></div>
+                    <div class="content-wrapper">
+                        <div class="content-header row">
                         </div>
-                        <div>
-                            <input
-                                id="n"
-                                type="text"
-                                placeholder="Username"
-                                title="username"
-                                value={this.username}
-                                onChange={(event) => this.username = (event.target as HTMLInputElement).value} />
-                        </div>
-                        <div>
-                            <input
-                                id="e"
-                                type="email"
-                                placeholder="Something@hotmail.com"
-                                title="email"
-                                value={this.email}
-                                onChange={(event) => this.email = (event.target as HTMLInputElement).value} />
-                        </div>
-                        <input
-                            id="p1"
-                            type="password"
-                            placeholder="Password"
-                            title="password"
-                            required
-                            value={this.password}
-                            onInput={(event) => (this.password = (event.target as HTMLInputElement).value)}
-                        />
+                        <div class="content-body">
+                            <section class="row flexbox-container">
+                                <div class="col-12 d-flex align-items-center justify-content-center">
+                                    <div class="col-lg-4 col-md-8 col-10 box-shadow-2 p-0">
+                                        <div class="card border-grey border-lighten-3 px-2 py-2 m-0">
+                                            <div class="card-header border-0">
+                                                <div class="card-title text-center">
+                                                    <h1>Sign Up</h1>
+                                                </div>
+                                                <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2"><span>Create Account</span>
+                                                </h6>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="card-body">
+                                                    <form class="form-horizontal form-simple" action="index.html" novalidate>
+                                                        <fieldset class="form-group position-relative has-icon-left mb-3">
+                                                            <input
+                                                                type="text"
+                                                                class="form-control form-control-lg input-lg"
+                                                                id="user-name"
+                                                                placeholder="User Name"
+                                                                value={this.username}
+                                                                onChange={(event) => this.username = (event.target as HTMLInputElement).value} />
+                                                            <div class="form-control-position">
+                                                                <i class="la la-user"></i>
+                                                            </div>
+                                                        </fieldset>
+                                                        {!this.username && this.showFormError && (
+                                                            <div class="text-danger">Please fill in the username.</div>
+                                                        )}
+                                                        <fieldset class="form-group position-relative has-icon-left mb-3">
+                                                            <input
+                                                                type="email"
+                                                                class="form-control form-control-lg input-lg"
+                                                                id="user-email"
+                                                                placeholder="Your Email Address"
+                                                                required
+                                                                value={this.email}
+                                                                onChange={(event) => this.email = (event.target as HTMLInputElement).value} />
+                                                            <div class="form-control-position">
+                                                                <i class="la la-envelope"></i>
+                                                            </div>
+                                                        </fieldset>
+                                                        {!this.email && this.showFormError && (
+                                                            <div class="text-danger">Please fill in the email address.</div>
+                                                        )}
+                                                        <fieldset class="form-group position-relative has-icon-left mb-3">
+                                                            <input
+                                                                type="password"
+                                                                class="form-control form-control-lg input-lg"
+                                                                id="user-password"
+                                                                placeholder="Enter Password"
+                                                                required
+                                                                value={this.password}
+                                                                onInput={(event) => (this.password = (event.target as HTMLInputElement).value)} />
+                                                            <div class="form-control-position">
+                                                                <i class="la la-key"></i>
+                                                            </div>
+                                                        </fieldset>
+                                                        <fieldset class="form-group position-relative has-icon-left mb-1">
+                                                            <input
+                                                                type="password"
+                                                                class="form-control form-control-lg input-lg"
+                                                                id="confirm-user-password"
+                                                                placeholder="Confirm Password"
+                                                                required
+                                                                value={this.confirmPassword}
+                                                                onInput={(event) => (this.confirmPassword = (event.target as HTMLInputElement).value)} />
+                                                            <div class="form-control-position">
+                                                                <i class="la la-key"></i>
+                                                            </div>
+                                                        </fieldset>
 
-                        <input
-                            id="p2"
-                            type="password"
-                            placeholder="Confirm Password"
-                            title="confirm password"
-                            required
-                            value={this.confirmPassword}
-                            onInput={(event) => (this.confirmPassword = (event.target as HTMLInputElement).value)}
-                        />
-                        <div>
-                            {/* Check if showFormError is true and form has not been submitted */}
-                            {this.showFormError && !this.formSubmitted && (this.username === '' || this.email === '' || this.password === '' || this.confirmPassword === '') && (
-                                <div>
-                                    <span id="error-message" class="error">
-                                        Please Fill All Required Fields.
-                                    </span>
+                                                        {!this.passwordsMatch && this.showFormError && (
+                                                            <div class="text-danger">Passwords do not match.</div>
+                                                        )}
+                                                        <button
+                                                            type="submit"
+                                                            class="btn btn-info btn-lg btn-block"
+                                                            onClick={(event) => this.handleCreateAccountClick(event)}>
+                                                            <i class="ft-unlock"></i> Register</button>
+                                                    </form>
+                                                </div>
+                                                <p class="text-center">
+                                                    Already have an account ?
+                                                    <a
+                                                        class="card-link"
+                                                        onClick={this.onSignInLinkClick.bind(this)}>
+                                                        Login
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            )}
-                            {this.passwordsMatch ? [
-                                <div>
-                                    <button
-                                        id="create"
-                                        class="n"
-                                        onClick={(event) => this.handleCreateAccountClick(event)}>
-                                        Create Account
-                                    </button>
-                                </div>,
-                                <div>
-                                    <span id="sign-in-take" class="s">
-                                        Already Have An Account?
-                                        <a onClick={this.onSignInLinkClick.bind(this)}>
-                                            Sign In
-                                        </a>
-                                    </span>
-                                </div>
-                            ] : (
-                                <div>
-                                    <span id="error-message" class="error">
-                                        Passwords Do Not Match. Please Try Again.
-                                    </span>
-                                </div>
-                            )}
+                            </section>
+
                         </div>
-                    </form>
+                    </div>
                 </div>
             ];
         }
